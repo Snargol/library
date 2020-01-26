@@ -1,0 +1,22 @@
+{
+  "database": {
+    "rules": "app.component.ts"
+  },
+  "hosting": {
+    "public": "dist/library",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "storage": {
+    "rules": "app.component.ts"
+  }
+}

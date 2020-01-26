@@ -20,6 +20,8 @@ export class AppComponent {
       appId: '1:562836823314:web:cba66c6f9fa0aab2ebe7cb',
       measurementId: 'G-5E82GWXHJ2'
     };
+    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
   }
 }

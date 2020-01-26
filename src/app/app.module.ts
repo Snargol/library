@@ -20,9 +20,10 @@ import { FourOhFourComponent } from './Application/four-oh-four/four-oh-four.com
 const appRoutes: Routes = [
   { path: 'User/sign-up', component: SignUpComponent },
   { path: 'User/sign-in', component: SignInComponent },
-  { path: 'Books/books-list', component: BooksListComponent },
-  { path: 'Books/books-view', component: BookViewComponent },
-  { path: 'Books/books-edit', component: BookEditComponent },
+  { path: 'Books/books-list', canActivate: [AuthGuardService], component: BooksListComponent },
+  { path: 'Books/books-view/:id', canActivate: [AuthGuardService], component: BookViewComponent },
+  { path: 'Books/books-edit/:id', canActivate: [AuthGuardService], component: BookEditComponent },
+  { path: 'Books/books-new', canActivate: [AuthGuardService], component: BookEditComponent },
   { path: '', component: SignInComponent },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: 'not-found' }

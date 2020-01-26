@@ -1,1 +1,27 @@
-<p>books-list works!</p>
+<div class="container-fluid">
+  <h2>Vos livres</h2>
+  <div class="list-group">
+    <div class="row">
+      <button
+        class="list-group-item"
+        *ngFor="let book of books; let i = index"
+        (click)="onViewBook(i)">
+          <div class="col-md-3">
+            <img style="max-width:150px;" *ngIf="book.photo" [src]="book.photo">
+          </div>
+          <div class="col-md-9">
+            <h3>
+              {{ book.title }}
+            </h3>
+            <p>
+              {{ book.author }}
+            </p>
+            <button class="btn btn-default pull-right" (click)="onDeleteBook(book)">
+              <span class="glyphicon glyphicon-minus"></span>
+            </button>
+          </div>
+      </button>
+    </div>
+  </div>
+  <button class="btn btn-primary" (click)="onNewBook()">Nouveau livre</button>
+</div>
