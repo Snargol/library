@@ -1,11 +1,10 @@
 {
   "database": {
-    "rules": "app.component.ts"
+    "rules": "database.rules.json"
   },
   "hosting": {
     "public": "dist/library",
     "ignore": [
-      "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
@@ -17,6 +16,6 @@
     ]
   },
   "storage": {
-    "rules": "app.component.ts"
+    "rules": "storage.rules"
   }
 }

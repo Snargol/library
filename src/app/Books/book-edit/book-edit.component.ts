@@ -13,6 +13,7 @@ export class BookEditComponent implements OnInit {
 
   bookForm: FormGroup;
   book: Book;
+  edit: boolean;
   fileIsUploading = false;
   fileUrl: string;
   fileUploaded = false;
@@ -23,14 +24,22 @@ export class BookEditComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.initForm();
     const id = this.route.snapshot.params.id;
-
     this.booksService.getBook(+id).then(
       (book: Book) => {
         this.book = book;
+        this.edit = true;
       }
     );
+
+    if (this.book === undefined) {
+      this.book = new Book('', '');
+      this.book.synopsis = '';
+      this.edit = false;
+    }
+
+    this.initForm();
+
   }
 
   initForm() {
@@ -52,7 +61,11 @@ export class BookEditComponent implements OnInit {
     if (this.fileUrl && this.fileUrl !== '') {
       newBook.photo = this.fileUrl;
     }
-    this.booksService.createNewBook(newBook);
+    if (!this.edit) {
+      this.booksService.createNewBook(newBook);
+    } else {
+      this.booksService.saveBook(this.book, 1);
+    }
     this.router.navigate(['/Books', 'books-list']);
   }
 

@@ -16,7 +16,8 @@ export class BookService {
   }
 
   saveBook(book: Book, id: number) {
-    firebase.database().ref('/books' + id).set(book);
+    this.books.push(book);
+    this.saveBooks();
   }
 
   saveBooks() {
